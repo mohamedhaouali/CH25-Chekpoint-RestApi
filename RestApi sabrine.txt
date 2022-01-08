@@ -1,0 +1,1452 @@
+************
+
+npx create-react-app client
+
+********package.json (ajout cette ligne)
+
+  "scripts": {
+  
+    "frontend": "cd client && npm start"
+  },
+  
+*******************lancer les 2 commandes en mm temps
+
+npm run backend
+
+npm run frontend   
+
+******************https://www.npmjs.com/package/concurrently
+
+npm install -D concurrently
+
+*****************package.json (ajout cette ligne)
+
+
+  "scripts": {
+  
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+	
+  },
+  
+*******************lancer terminal 
+
+npm run dev
+
+**************  effacer App.test,logo,reportWeb,setupTests
+
+*****************src->newFolder(JS)->
+
+*********fi west dossierJS->new folder actions->new folder reducer-> new folder actionsType->
+
+new Folder (store)
+
+***************src->newFolder->Components
+
+*****************src->newFolder->Pages
+
+*************Pages->newFolder->ContactList
+
+*************Pages->newFolder->AddEditContact
+
+**********Pages->newFolder->Errors
+
+***************fi west Components->newFile(ContactList)
+
+***************fi west Components->newFolder(ContactCard)
+
+***************fi west Components->newFolder(NavBar)
+
+***************fi west Components->newFolder(Footer)
+
+*************terminal
+
+cd client
+
+npm i bootstrap react-bootstrap redux react-redux axios react-router-dom
+
+
+***************Pages->ContactList->newFile->ContactList.js
+
+***************Pages->ContactList->newFile->ContactList.css
+
+**************Pages->AddEditContact->newFile->AddEditContact.js
+
+**************Pages->AddEditContact->newFile->AddEditContact.css
+
+***********Pages->Errors->->newFile->Errors.js
+
+***********Pages->Errors->->newFile->Errors.css
+
+*******************************Pages 24.41
+
+***********Pages->ContactList.js
+
+import React from 'react'
+
+import './ContactList.css'
+
+const ContactList = () => {
+
+    return (
+        <div className="contactList">
+            ContactList
+        </div>
+    )
+}
+
+export default ContactList;
+
+***************Pages->ContactList.css
+
+.contactList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5%;
+}
+
+*****************Pages->AddEditContact.js
+
+
+import React from "react";
+import { Form } from 'react-bootstrap'
+
+
+import './AddEditContact.css'
+
+const AddEditContact = () => {
+    return (
+        <div>
+            <Form className="myForm">
+                {/* input name */}
+                <Form.Group className="my-little-form">
+                    <Form.Control type="text"
+                        placeholder="Enter contact name ..."
+                        name="name"
+                    />
+
+                    <Form.Text className="text-muted">Name is required</Form.Text>
+
+                </Form.Group>
+
+                {/* input email */}
+                <Form.Group className="my-little-form">
+                    <Form.Control type="text"
+                        placeholder="Enter contact email ..."
+                        name="email"
+                    />
+
+                    <Form.Text className="text-muted">email is required</Form.Text>
+
+                </Form.Group>
+
+                {/* input phone */}
+                <Form.Group className="my-little-form">
+                    <Form.Control type="text"
+                        placeholder="Enter contact phone ..."
+                        name="phone"
+                    />
+
+                    <Form.Text className="text-muted">phone is required</Form.Text>
+
+                </Form.Group>
+
+                {/* add or edit button */}
+                <img src={addBtn} alt="add" className="addBtn" />
+
+                {/*  <img src={addBtn} alt="edit" className="editBtn" /> */}
+
+            </Form>
+        </div>
+    )
+}
+
+
+
+
+
+
+**************Pages->AddEditContact.css
+
+.myForm {
+  margin: 1% 30%;
+  background-color: #bcd0d1;
+  padding: 4%;
+  border-radius: 15px;
+}
+
+.addBtn,
+.editBtn {
+  margin-top: 5%;
+  width: 70px;
+  cursor: pointer;
+}
+
+*******************Pages->Error
+
+*************Error.js
+
+import React from "react";
+
+import './Errors.css'
+
+const Error = () => {
+    return (
+        <div>
+            <img src={error} alt="error" />
+        </div>
+    )
+}
+
+export default Error
+
+******************Error.css
+
+****************src->new folder->assets
+
+**************************** Components 25.41
+
+............. Components->NavBar.JS
+
+import React from "react";
+import { link } from 'react-router-dom'
+
+import './NavBar.css'
+
+const NavBar = () => {
+    return (
+
+        <header>
+            {/* contact list button */}
+
+            <button className="appBtn">Contact List</button>
+
+
+            {/* add contact button */}
+
+            <button className="appBtn">Add Contact</button>
+
+        </header>
+    )
+
+}
+
+export default NavBar
+
+
+
+****************NavBar.css
+
+.appBtn {
+  background-color: #bcd0d1;
+  border-radius: 5px;
+  border: 3px solid #9cb0b1;
+  color: #182525;
+  font-size: 18px;
+  width: 150px;
+  height: 50px;
+  margin: 3%;
+  cursor: pointer;
+  outline: none;
+}
+
+
+*****************************Components->Footer.js
+
+import React from "react";
+import './Footer.css'
+
+const Footer = () => {
+    return (
+        <footer>
+            <h3>Footer</h3>
+        </footer>
+    )
+}
+
+export default Footer
+
+******************Components->ContactCard.js
+
+
+import React from "react";
+
+
+import './ContactCard.css'
+
+const ContactCard = () => {
+    return (
+        <div className="contactCard">
+            <img src={avatar} alt="avatar" className="avatar" />
+            <h3>name</h3>
+            <span>email</span>
+            <span>phone</span>
+            <div className="deleteEditBtns">
+                {/*delete button */}
+                <img src={deleteBtn}
+                    alt="delete-icon"
+                />
+
+                {/*edit button */}
+                <img src={editBtn}
+                    alt="edit-icon"
+                />
+
+
+            </div>
+
+        </div>
+    )
+}
+
+export default ContactCard
+
+*************************Components->ContactCard.CSS
+
+.contactCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #bcd0d1;
+  border: 5px solid #9cb0b1;
+  border-radius: 20px;
+  width: 200px;
+  height: 300px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.avatar {
+  width: 40px;
+  margin: 20px;
+}
+
+.deleteEditBtns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.deleteEditBtns img {
+  width: 50px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+********************App.css
+
+.App {
+  text-align: center;
+  margin: 50px 0;
+}
+
+**********************************31.30 index.js (tzid router)
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import './index.css';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom'
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+****************multiple path in router
+
+
+import './App.css';
+
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
+import ContactList from './Pages/ContactList/ContactList';
+import AddEditContact from './Pages/AddEditContact/AddEditContact';
+import Errors from './Pages/Errors/Errors'
+
+
+
+function App() {
+  return (
+    <div className="App">
+
+      <Router>
+        <Route exact path='/' component={ContactList} />
+        <Route path={['/addContact', '/editcontact/:id']} component={AddEditContact} />
+        <Route exact path='/*' component={Errors} />
+      </Router>
+
+    </div>
+  );
+}
+
+export default App;
+
+
+
+**********************39.52 App.js ZIDNA(Navbar Footer)
+
+import './App.css';
+
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from "react-router-dom";
+
+import ContactList from './Pages/ContactList/ContactList';
+import AddEditContact from './Pages/AddEditContact/AddEditContact';
+import Errors from './Pages/Errors/Errors';
+import Navbar from './Components/NavBar';
+import Footer from './Components/Footer';
+
+function App() {
+  return (
+    <div className="App">
+      <Navbar />
+      <Switch>
+        <Route exact path='/' component={ContactList} />
+        <Route path={['/addContact', '/editcontact/:id']} component={AddEditContact} />
+        <Route exact path='/*' component={Errors} />
+      </Switch>
+      <Footer />
+    </div >
+  );
+}
+
+export default App;
+
+*******************40 .00 Erreur
+
+cd client
+
+installer version 5 du router
+
+*********************Footer fi App.js on le desactive
+
+import './App.css';
+import { Switch, Route } from "react-router-dom";
+
+
+
+import ContactList from './Pages/ContactList/ContactList';
+import AddEditContact from './Pages/AddEditContact/AddEditContact';
+import Errors from './Pages/Errors/Errors';
+import Navbar from './Components/NavBar/NavBar';
+//import Footer from './Components/Footer/Footer';
+
+function App() {
+  return (
+    <div className="App">
+      <Navbar />
+      <Switch>
+        <Route exact path='/' component={ContactList} />
+        <Route path={['/addContact', '/editcontact/:id']} component={AddEditContact} />
+        <Route exact path='/*' component={Errors} />
+      </Switch>
+      {/*<Footer / > */}
+    </div >
+  );
+}
+
+export default App;
+
+
+************************Ajout Link fi NavBar.js
+
+import React from "react";
+import { Link } from 'react-router-dom';
+
+import './NavBar.css'
+
+const NavBar = () => {
+    return (
+
+        <header>
+            {/* contact list button */}
+
+            <Link to='/'>
+
+                <button className="appBtn">Contact List</button>
+
+            </Link>
+
+
+            {/* add contact button */}
+            <Link to='/addcontact'>
+
+                <button className="appBtn">Add Contact</button>
+            </Link >
+
+
+        </header>
+    )
+
+}
+
+export default NavBar
+
+
+*****************************44.31 index.js   (redux) (bech tzid Provider)
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+
+import './index.css';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+**************************JS->newfolder->store->new file->store.js
+
+**************************JS->newfolder->reducer->2 new file->contact.js index.js
+
+*********************JS->newfolder->actionsType->contact.js
+
+*********************JS->newfolder->actions->contact.js
+
+*************index.js (store)
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import App from './App';
+import store from './JS/store/store';
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+
+import './index.css';
+
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+**********************JS->store->store
+
+import { createStore } from 'redux';
+import rootReducer from '../reducers/index'
+
+const store = createStore(rootReducer)
+
+
+export default store
+
+********************JS->reducers->index
+
+import { combineReducers } from 'redux';
+import contactReducer from './contact'
+
+
+const rootReducer = combineReducers({ contactReducer })
+
+
+export default rootReducer
+
+********************53 exp redux
+
+********** JS->actionsType->contact.js
+
+//loading
+export const GET_CONTACTS_LOAD = "GET_CONTACTS_LOAD"
+//soit success
+export const GET_CONTACTS_SUCC = "GET_CONTACTS_SUCC"
+//soit fail
+export const GET_CONTACTS_FAIL = "GET_CONTACTS_FAIL"
+
+
+********************JS->actions->contact.js
+
+
+import axios from 'axios'
+import { GET_CONTACTS_SUCC, GET_CONTACTS_FAIL, GET_CONTACTS_LOAD } from '../actionsType/contact'
+
+export const getContacts = () => async (dispatch) => {
+
+    dispatch({ type: GET_CONTACTS_LOAD })
+
+    try {
+        let result = await axios.get('api/contacts') //http://localhost:6000/api/contacts/
+        console.log(result)
+        //data base du donnees
+        //listContacts du Postman
+        dispatch({ type: GET_CONTACTS_SUCC, payload: result.data.listContacts })
+
+    } catch (error) {
+        console.log(error)
+        dispatch({ type: GET_CONTACTS_FAIL, payload: error.response.data })
+
+    }
+
+}
+
+******************reducers->contact.js  1h.20.40
+
+import { GET_CONTACTS_FAIL, GET_CONTACTS_LOAD, GET_CONTACTS_SUCC } from "../actionsType/contact";
+
+
+const initState = {
+    //listContacts du base du donnees
+    listContacts: [],
+    //load du base du donnees
+    load: false,
+    //
+    errors: null
+}
+
+export const contactReducer = (state = initState, { type, payload }) => {
+
+    switch (type) {
+        case GET_CONTACTS_LOAD: return { ...state, load: true }
+        //payload du action
+        case GET_CONTACTS_SUCC: return { ...state, load: false, listContacts: payload }
+        case GET_CONTACTS_FAIL: return { ...state, load: false, errors: payload }
+        default: return state
+
+
+    }
+
+}
+
+export default contactReducer;
+
+
+**********************Pages->
+
+//zidna use effect
+
+
+import React, { useEffect } from 'react'
+
+import './ContactList.css'
+
+import { useDispatch } from 'react-redux'
+import { getContacts } from '../../JS/actions/contact'
+
+const ContactList = () => {
+    // cycle du vie 
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getContacts())
+
+    }, [dispatch]);
+
+
+
+    return (
+        <div className="contactList">
+            ContactList
+        </div>
+    )
+}
+
+export default ContactList;
+
+ 
+***********************1.30.26 (terminal) 
+
+// thunk middleware redux
+
+npm i redux-thunk
+
+************google (redux dev tools)
+
+https://github.com/zalmoxisus/redux-devtools-extension
+
+**************
+
+https://github.com/zalmoxisus/redux-devtools-extension
+
+1.2 Advanced store setup
+
+***********JS->store->store 1 h :39
+
+import { createStore, applyMiddleware, compose } from 'redux';
+import rootReducer from '../reducers/index';
+
+import thunk from 'redux-thunk'
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+
+
+const store = createStore(rootReducer,
+    composeEnhancers(applyMiddleware(thunk))
+)
+
+
+export default store
+
+*******************src ->package.json  (ajout cette ligne )
+
+    "proxy": "http://localhost:6000"
+
+****************relance le terminal 
+
+npm run dev
+
+
+***************Pages->ContactList->ContactList.js
+
+//zadet
+
+    const listContacts = useSelector(state => state.contactReducer.listContacts)
+	
+// zadet map
+
+	
+       <div className="contactList">
+            {listContacts.map(contact =>
+                <ContactCard contact={contact} key={contact._id}
+                />
+            )}
+        </div>
+
+**********************
+
+import React, { useEffect, useState } from 'react'
+
+import './ContactList.css'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { getContacts } from '../../JS/actions/contact'
+import contactReducer from '../../JS/reducers/contact'
+
+import ContactCard from '../../Components/ContactCard/ContactCard'
+
+const ContactList = () => {
+    //Reducer
+    const listContacts = useSelector(state => state.contactReducer.listContacts)
+
+    // cycle du vie 
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getContacts())
+
+    }, [dispatch]);
+
+
+
+    return (
+        <div className="contactList">
+            {listContacts.map(contact =>
+                <ContactCard contact={contact} key={contact._id}
+                />
+            )}
+        </div>
+    )
+}
+
+export default ContactList;
+
+
+****************************1h 46
+
+les images dans le dossier public
+
+**********************Components->ContactCard->ContactCard.js (props) 
+
+ import React from "react";
+
+
+import './ContactCard.css'
+
+const ContactCard = ({ contact }) => {
+    return (
+        <div className="contactCard">
+            {/*<img src={avatar} alt="avatar" className="avatar" />*/}
+            <img src="/assets/avatar.png" alt="avatar" className="avatar" />
+            <h3>{contact.name}</h3>
+            <span>{contact.email}</span>
+            <span>{contact.phone}</span>
+            <div className="deleteEditBtns">
+                {/*delete button 
+                    alt="delete-icon"
+                />
+
+               */}
+
+                <img src="/assets/delete.jpg" alt="delete-icon" />
+
+                {/*edit button 
+                <img src={editBtn}
+                    alt="edit-icon"
+                />*/}
+
+                <img src="/assets/edit.png" alt="edit-icon" />
+
+            </div>
+
+        </div>
+    )
+}
+
+export default ContactCard
+
+*********************1h.48 Pages->ContactList (load) 
+
+import React, { useEffect } from 'react'
+
+import './ContactList.css'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { getContacts } from '../../JS/actions/contact'
+
+
+import ContactCard from '../../Components/ContactCard/ContactCard'
+
+const ContactList = () => {
+    //Reducer
+    const listContacts = useSelector(state => state.contactReducer.listContacts)
+    //Reducer load
+    const load = useSelector(state => state.contactReducer.load)
+
+    // cycle du vie 
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getContacts())
+
+    }, [dispatch]);
+
+
+
+    return (
+        load ? <h2>waiiiittttt</h2>
+            :
+            <div className="contactList">
+                {listContacts.map(contact =>
+                    <ContactCard contact={contact} key={contact._id}
+                    />
+                )}
+            </div>
+    )
+}
+
+export default ContactList;
+
+********************** 1.49.56 JS->actionsType->contact.js
+
+//loading
+export const GET_CONTACTS_LOAD = "GET_CONTACTS_LOAD"
+//soit success
+export const GET_CONTACTS_SUCC = "GET_CONTACTS_SUCC"
+//soit fail
+export const GET_CONTACTS_FAIL = "GET_CONTACTS_FAIL"
+// delete 
+export const DELETE_CONTACT = "DELETE_CONTACT"
+
+*************actions->contact
+
+// delete contact
+
+export const deleteContact = (contactId) => async (dispatch) => {
+    try {
+        await axios.delete(`/api/contact/${contactId}`)
+        dispatch({ type: DELETE_CONTACT })
+    } catch (error) {
+
+    }
+}
+
+*******************actionsType->contact
+
+// delete contact
+
+export const deleteContact = (contactId) => async (dispatch) => {
+    try {
+        await axios.delete(`/api/contacts/${contactId}`)
+        dispatch({ type: DELETE_CONTACT_SUCCESS })
+        dispatch(getContacts())
+    } catch (error) {
+        dispatch({ type: DELETE_CONTACT_FAIL, payload: error.response.data })
+
+    }
+	
+******************src->Components->ContactCard->ContactCard.js
+
+import { useDispatch } from 'react-redux'
+
+
+      <div className="deleteEditBtns">
+                {/*delete button 
+                    alt="delete-icon"
+                />
+
+               */}
+
+                <img src="/assets/delete.jpg" alt="delete-icon"
+
+                    onClick={() => dispatch(deleteContact(contact._id))}
+
+                />
+
+***************src->Components->ContactCard->ContactCard.js
+
+import React from "react";
+import { useDispatch } from 'react-redux';
+import { deleteContact } from "../../JS/actions/contact";
+
+
+import './ContactCard.css'
+
+const ContactCard = ({ contact }) => {
+
+    // dispatch for delete
+    const dispatch = useDispatch()
+
+    return (
+        <div className="contactCard">
+            {/*<img src={avatar} alt="avatar" className="avatar" />*/}
+            <img src="/assets/avatar.png" alt="avatar" className="avatar" />
+            <h3>{contact.name}</h3>
+            <span>{contact.email}</span>
+            <span>{contact.phone}</span>
+            <div className="deleteEditBtns">
+                {/*delete button 
+                    alt="delete-icon"
+                />
+
+               */}
+
+                <img src="/assets/delete.jpg" alt="delete-icon"
+
+                    onClick={() => dispatch(deleteContact(contact._id))}
+
+                />
+
+                {/*edit button 
+                <img src={editBtn}
+                    alt="edit-icon"
+                />*/}
+
+                <img src="/assets/edit.png" alt="edit-icon" />
+
+            </div>
+
+        </div>
+    )
+}
+
+export default ContactCard
+
+
+
+*************************************add				
+
+**********************JS->actionsType->contact
+
+
+//add
+
+export const ADD_CONTACT_SUCCESS = "ADD_CONTACT_SUCCESS"
+export const ADD_CONTACT_FAIL = "ADD_CONTACT_FAIL"
+
+****************JS->actions->contact
+
+//add contact
+
+export const addContact = (newContact) => async (dispatch) => {
+
+    try {
+
+        await axios.post(`/api/contacts/`, newContact)
+        dispatch({ type: ADD_CONTACT_SUCCESS })
+        dispatch(getContacts())
+
+    } catch (error) {
+
+        dispatch({ type: ADD_CONTACT_FAIL, payload: error.response.data })
+
+    }
+
+***********************reducers->contact
+
+//DELETE +ADD
+        case DELETE_CONTACT_FAIL: return { ...state, errors: payload }
+
+        case ADD_CONTACT_FAIL: return { ...state, errors: payload }
+
+
+******************	Pages->AddEditContact  (handleChange)
+
+import React, { useState } from "react";
+import { Form } from 'react-bootstrap'
+
+import addBtn from '../../assets/addBtn.png'
+
+
+import './AddEditContact.css'
+
+const AddEditContact = () => {
+
+    const [contact, setContact] = useState({ name: "", email: "", phone: "" });
+
+    const handleChange = (e) => {
+        setContact({ ...contact, [e.target.name]: e.target.value })
+    }
+
+    return (
+        <div>
+            <Form className="myForm">
+                {/* input name */}
+                <Form.Group className="my-little-form">
+                    <Form.Control type="text"
+                        placeholder="Enter contact name ..."
+                        name="name"
+                        value={contact.name}
+                        onChange={handleChange}
+                    //onChange={() => setContact({ ...contact, name: e.target.value })}
+                    />
+
+                    <Form.Text className="text-muted">Name is required</Form.Text>
+
+                </Form.Group>
+
+                {/* input email */}
+                <Form.Group className="my-little-form">
+                    <Form.Control type="text"
+                        placeholder="Enter contact email ..."
+                        name="email"
+                        value={contact.email}
+                        onChange={handleChange}
+                    />
+
+                    <Form.Text className="text-muted">email is required</Form.Text>
+
+                </Form.Group>
+
+                {/* input phone */}
+                <Form.Group className="my-little-form">
+                    <Form.Control type="text"
+                        placeholder="Enter contact phone ..."
+                        name="phone"
+                        value={contact.phone}
+                        onChange={handleChange}
+                    />
+
+                    <Form.Text className="text-muted">phone is required</Form.Text>
+
+                </Form.Group>
+
+                {/* add or edit button */}
+                <img src={addBtn} alt="add" className="addBtn" />
+
+                {/* <img src={addBtn} alt="edit" className="editBtn" />*/}
+
+            </Form>
+        </div>
+    )
+}
+
+export default AddEditContact;
+
+
+*******************************test browser -> components->AddEditContact  (dispatch,handleChange)
+
+import React, { useState } from "react";
+import { Form } from 'react-bootstrap';
+
+import { useDispatch } from 'react-redux';
+import { addContact } from "../../JS/actions/contact";
+
+import addBtn from '../../assets/addBtn.png'
+
+
+import './AddEditContact.css'
+
+const AddEditContact = () => {
+
+    const [contact, setContact] = useState({ name: "", email: "", phone: "" });
+
+    // dispatch for add
+
+    const dispatch = useDispatch()
+
+    const handleChange = (e) => {
+        setContact({ ...contact, [e.target.name]: e.target.value })
+    }
+
+    return (
+        <div>
+            <Form className="myForm">
+                {/* input name */}
+                <Form.Group className="my-little-form">
+                    <Form.Control type="text"
+                        placeholder="Enter contact name ..."
+                        name="name"
+                        value={contact.name}
+                        onChange={handleChange}
+                    //onChange={() => setContact({ ...contact, name: e.target.value })}
+                    />
+
+                    <Form.Text className="text-muted">Name is required</Form.Text>
+
+                </Form.Group>
+
+                {/* input email */}
+                <Form.Group className="my-little-form">
+                    <Form.Control type="text"
+                        placeholder="Enter contact email ..."
+                        name="email"
+                        value={contact.email}
+                        onChange={handleChange}
+                    />
+
+                    <Form.Text className="text-muted">email is required</Form.Text>
+
+                </Form.Group>
+
+                {/* input phone */}
+                <Form.Group className="my-little-form">
+                    <Form.Control type="text"
+                        placeholder="Enter contact phone ..."
+                        name="phone"
+                        value={contact.phone}
+                        onChange={handleChange}
+                    />
+
+                    <Form.Text className="text-muted">phone is required</Form.Text>
+
+                </Form.Group>
+
+                {/* add or edit button */}
+                <img src={addBtn} alt="add" className="addBtn"
+                    onClick={() => dispatch(addContact(contact))}
+
+                />
+
+                {/* <img src={addBtn} alt="edit" className="editBtn" />*/}
+
+            </Form>
+        </div>
+    )
+}
+
+export default AddEditContact;
+
+************************ http://localhost:3000/addcontact
+
+3abi formulaire 
+
+
+*******************Pages->AddEditContact  (redirection min ADD il liste Contacts)
+
+import { Link } from 'react-router-dom'
+
+
+     {/* add or edit button */}
+                <Link to='/'>
+                    <img src={addBtn} alt="add" className="addBtn"
+                        onClick={() => dispatch(addContact(contact))}
+
+                    />
+
+                </Link>
+
+***************************** edit 
+
+*********************reducers->contact (zidna edit)
+
+const initState = {
+    //listContacts du base du donnees
+    listContacts: [],
+    //load du base du donnees
+    load: false,
+    //
+    errors: null,
+    //edit
+    edit: false
+}
+
+*******************actionsType->contact
+
+
+// edit 
+
+export const TOGGLE_TRUE = "TOGGLE_TRUE"
+export const TOGGLE_FALSE = "TOGGLE_FALSE"
+
+********************actions->contact
+
+//edit
+
+// Toggle true
+
+
+export const toggleTrue = () => {
+    return {
+        type: TOGGLE_TRUE
+    }
+
+
+}
+
+// Toggle true
+
+
+export const togglefalse = () => {
+    return {
+        type: TOGGLE_FALSE
+    }
+
+}
+
+***************reducers->contact
+
+
+        // TOGGLE_TRUE
+
+        case TOGGLE_TRUE: return { ...state, edit: true }
+
+        // TOGGLE_FALSE
+
+        case TOGGLE_FALSE: return { ...state, edit: false }
+		
+		
+****************Pages->AddEditContact	
+	
+import { useDispatch, useSelector } from 'react-redux';
+
+  // Edit
+
+    const edit = useSelector(state => state.contactReducer.edit)
+	
+	
+	**********************
+	
+                {edit ?
+
+                    <img src={editBtn} alt="edit" className="editBtn" />
+                    :
+                    <Link to='/'>
+                        <img src={addBtn} alt="add" className="addBtn"
+                            onClick={() => dispatch(addContact(contact))}
+
+                        />
+
+                    </Link>
+
+                }
+
+******************************Components->ContactCard
+
+    {/*edit button*/}
+                <img src={editBtn}
+                    alt="edit-icon"
+                    onClick={() => dispatch(toggleTrue())}
+                />
+				
+******************Components->NavBar
+
+import { useDispatch } from "react-redux";
+
+ const dispatch = useDispatch()
+ 
+    {/* add contact button */}
+            <Link to='/addcontact'>
+                <button className="appBtn"
+                    onClick={() => dispatch(togglefalse())}
+                >Add Contact</button>
+            </Link >			
+
+*********************http://localhost:3000/
+
+************************Components->ContactCard
+
+   {/*edit button*/}
+
+                <Link to={`/editContact/${contact._id}`}>
+
+                    <img src={editBtn}
+                        alt="edit-icon"
+                        onClick={() => dispatch(toggleTrue())}
+                    />
+
+                </Link>
+				
+
+********************actionsType->contact
+
+//loading edit get by id
+export const GET_CONTACT_LOAD = "GET_CONTACT_LOAD"
+//soit success edit
+export const GET_CONTACT_SUCC = "GET_CONTACT_SUCC"
+//soit fail edit
+export const GET_CONTACT_FAIL = "GET_CONTACT_FAIL"
+
+
+*********************action->contact
+
+//get contact
+
+export const getContact = (contactId) => async (dispatch) => { //http://localhost:6000/api/contacts/id
+    dispatch({ type: GET_CONTACT_LOAD })
+    try {
+        let result = await axios.get(`/api/contacts/${contactId}`)
+
+         dispatch({ type: GET_CONTACT_SUCC, payload: result.data.contactToFind })
+
+    } catch (error) {
+
+        dispatch({ type: GET_CONTACT_FAIL, payload: error.response.data })
+
+    }
+		
+
+************************reducers->contact
+
+   //edit get by id
+    contact: {}		
+	
+	
+	        // edit get by id
+
+        case GET_CONTACT_LOAD: return { ...state, load: true }
+
+        case GET_CONTACT_SUCC: return { ...state, load: true, contact: payload }
+
+        case GET_CONTACT_FAIL: return { ...state, load: false, errors: payload }
+		
+		
+**************Components->ContactCard 2h.45
+
+          {/*edit button*/}
+
+                <Link to={`/editContact/${contact._id}`}>
+
+                    <img src={editBtn}
+                        alt="edit-icon"
+                        onClick={() => { dispatch(toggleTrue()); dispatch(getContact(contact._id)) }}
+                    />
+
+                </Link>
+				
+***************Pages->AddEditContact
+
+// Edit + get by id
+
+    const contactRed = useSelector(state => state.contactReducer.contact)
+	
+
+    //use effect 
+
+    useEffect(() => {
+        edit ? setContact(contactRed) : setContact({ name: "", email: "", phone: "" })
+
+    }, [edit, contactRed]);				
+
+
+ {/* add or edit button */}
+
+                {edit ?
+
+                    <img src={editBtn} alt="edit" className="editBtn" />
+                    :
+                    <Link to='/'>
+                        <img src={addBtn} alt="add" className="addBtn"
+                            onClick={() => dispatch(addContact(contact))}
+
+                        />
+
+                    </Link>
+
+                }
+
+********************ActionType->contact
+
+//Edit
+
+
+//soit success edit
+export const EDIT_CONTACT_SUCC = "EDIT_CONTACT_SUCC"
+//soit fail edit
+export const EDIT_CONTACT_FAIL = "EDIT_CONTACT_FAIL"
+
+*****************JS->actions->contact	
+
+// Edit contact
+
+export const editContact = (contactId, newContact) => async (dispatch) => {
+
+    try {
+        await axios.put(`/api/contacts/${contactId}`, newContact)
+        dispatch({ type: EDIT_CONTACT_SUCC })
+        dispatch(getContacts())
+
+    } catch (error) {
+
+        dispatch({ type: EDIT_CONTACT_FAIL, payload: error.response.data })
+    }
+	
+**************Pages->AddEditContact
+
+edit ?
+
+                    <img src={editBtn} alt="edit" className="editBtn"
+                        onClick={() => dispatch(editContact(contact._id, contact))}
+
+                    />
+
+**************	Pages->AddEditContact
+
+edit ?
+                    <Link to='/'>
+                        <img src={editBtn} alt="edit" className="editBtn"
+                            onClick={() => dispatch(editContact(contact._id, contact))}
+
+                        />
+                    </Link>
+
+************reducers->contact (pour les messages)
+
+const initState = {
+ 
+    //contact updated
+    msg: ""
+}
+
+   // EDIT
+
+        case EDIT_CONTACT_FAIL: return { ...state, load: false, msg: payload.msg }
+		
+***************		
+
+
+					
